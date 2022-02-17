@@ -12,48 +12,19 @@ node *create_node(node *parent, int value) {
   new_node->left = new_node->right = NULL;
   return new_node;
 }
-int plus_all_values_of_binary_tree(node *binary_tree) {
+int count_number_of_nodes_that_are_odd(node *binary_tree) {
   node *ptr = binary_tree;
-  if(ptr == NULL){
+  if (ptr == NULL) {
     return 0;
   }
-  if (ptr->left == NULL && ptr->right == NULL) {
-    return ptr->value;
+  if (ptr->left == NULL && ptr->right == NULL && ptr->value % 2 == 1) {
+    return 1;
   }
-  return plus_all_values_of_binary_tree(ptr->left) + plus_all_values_of_binary_tree(ptr->right) + ptr->value;
-}
-int find_depth(node *binary_tree) {
-  int depth = 0;
-  while (binary_tree->parent != NULL) {
-    binary_tree = binary_tree->parent;
+  int plus = 0;
+  if(ptr->value % 2 == 1){
+    plus++;
   }
-  node *ptr1 = binary_tree;
-  while (ptr1->left != 0) {
-    ptr1 = ptr1->left;
-    depth++;
-  }
-  depth++;
-  int depth_two = 0;
-  node *ptr2 = binary_tree;
-  while (ptr2->left != 0) {
-    ptr2 = ptr2->left;
-    depth_two++;
-  }
-  depth_two++;
-  return depth >= depth_two ? depth : depth_two;
-}
-bool last_node(node *binary_tree) {
-  node *ptr = binary_tree;
-  node *ptr2 = binary_tree;
-  ptr2 = ptr2->parent;
-  while (ptr2->parent == ptr) {
-    ptr = ptr->parent;
-    ptr2 = ptr2->parent;
-    if (ptr2->parent == NULL) {
-      return true;
-    }
-  }
-  return false;
+  return count_number_of_nodes_that_are_odd(ptr->left) + count_number_of_nodes_that_are_odd(ptr->right) + plus;
 }
 node *next_available_node(node *current_node, int i) {
   node *parent = current_node->parent;
@@ -115,8 +86,8 @@ node *create_binary_tree(int number_of_nodes) {
   return root;
 }
 int main() {
-  int count_three = 100;
+  int count_three = 1431;
   node *binary_tree = binary_tree = create_binary_tree(count_three);
-  int depth_of_binary_tree = 0;
-  printf("Value is %d\n", plus_all_values_of_binary_tree(binary_tree));
+  int a = count_number_of_nodes_that_are_odd(binary_tree);
+  printf("Value is %d\n", a);
 }
