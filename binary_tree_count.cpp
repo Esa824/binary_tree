@@ -119,7 +119,7 @@ int count(node *binary_tree) {
   return count(ptr->left) + count(ptr->right) + 1;
 }
 int main() {
-  int count_three = 100;
+  int count_three = 6;
   node *binary_tree = binary_tree = create_binary_tree(count_three);
   int result = 0;
   printf("Value is %d\n", result = count(binary_tree));
