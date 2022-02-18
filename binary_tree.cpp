@@ -113,7 +113,7 @@ node *create_binary_tree(int number_of_nodes) {
   return root;
 }
 int main() {
-  int count_three = 20;
+  int count_three = 5;
   node *binary_tree = binary_tree = create_binary_tree(count_three);
   int depth_of_binary_tree = 0;
   printf("Value is %d\n", depth_of_binary_tree = find_depth(binary_tree));
