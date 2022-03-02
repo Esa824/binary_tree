@@ -18,9 +18,9 @@ node *create_node(node *parent, int value) {
   return new_node;
 }
 
-string print_binary(node *tree) {
+string print_binary_json(node *tree) {
   if (tree == NULL) {
     return "{}";
   }
-  return "{ \"value\": " + to_string(tree->value) + ", \"left\": " + print_binary(tree->left) + ", \"right\": " + print_binary(tree->right) + "}";
+  return "{ \"value\": " + to_string(tree->value) + ", \"left\": " + print_binary_json(tree->left) + ", \"right\": " + print_binary_json(tree->right) + "}";
 }
